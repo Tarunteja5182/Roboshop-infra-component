@@ -47,15 +47,6 @@ resource "aws_ami_from_instance" "main" {
   depends_on = [aws_ec2_instance_state.ins_stop]
 }
 
-
-resource "aws_route53_record" "www" {
-  zone_id = var.zone_id
-  name    = "${var.component}-${local.environment}.${var.domain_name}"
-  type    = "A"
-  ttl     = 1
-  records = [aws_instance.main.private_ip]
-}
-
 resource "aws_lb_target_group" "main" {
   name     = "${local.project}-${local.environment}-${var.component}"
   port     = local.port_no
