@@ -31,7 +31,7 @@ data "aws_ssm_parameter" "sg_id"{
 }
 
 data "aws_ssm_parameter" "frontend_listener_arn"{
-     name = "/${local.project}/${local.environment}/frontend_listener_arn"
+     name = "/${local.project}/${local.environment}/frontend_alb_listener_arn"
 }
 
 data "aws_ssm_parameter" "backend_listener_arn"{
