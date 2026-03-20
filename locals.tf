@@ -8,6 +8,7 @@ locals{
         terraform = "true"
     }
     vpc_id = data.aws_ssm_parameter.vpc_id.value
+    private_subnet_id = split(",",data.aws_ssm_parameter.private_subnet_id.value)[0]
     sg_id = data.aws_ssm_parameter.sg_id.value
     port_no = var.component == "frontend" ? 80 : 8080
     health_check_path = var.component == "frontend" ? "/" : "/health"
