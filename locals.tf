@@ -13,5 +13,5 @@ locals{
     port_no = var.component == "frontend" ? 80 : 8080
     health_check_path = var.component == "frontend" ? "/" : "/health"
     listener_arn = var.component == "frontend" ? data.aws_ssm_parameter.frontend_listener_arn.value : data.aws_ssm_parameter.backend_listener_arn.value
-    host_header = var.component == "frontend" ? ["${var.component}-${local.project}-${local.environment}.${var.domain_name}"] : ["${var.component}-${local.project}-${local.environment}.${var.domain_name}"]
+    host_header = var.component == "frontend" ? ["${var.component}-${local.project}-${local.environment}.${var.domain_name}"] : ["${var.component}.${local.project}-${local.environment}.${var.domain_name}"]
 }
